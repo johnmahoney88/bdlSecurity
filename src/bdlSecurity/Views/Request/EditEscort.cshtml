@@ -1,0 +1,97 @@
+﻿@model bdlSecurity.ViewModels.SingleRequestEscortViewModel
+@{
+    ViewBag.Title = "Edit Escort";
+
+}
+@section Scripts{
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h3>@ViewBag.Message</h3>
+
+<div class="row">
+    <form method="post" novalidate>
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="alert-info"></div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.RequestorBadgeNumber" class="form-control-static">RequestorBadgeNumber</label>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-control-static">@Model.Escort.RequestorBadgeNumber</label>
+                <input type="hidden" asp-for="Escort.RequestorBadgeNumber" />
+                <input type="hidden" asp-for="Escort.EscortNo" />
+                <input type="hidden" asp-for="Escort.RequestID" />
+                <input type="hidden" asp-for="ReturnAction" />
+                <input type="hidden" asp-for="RequestAction" />
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.EscortNo" class="form-control-static">Escort No</label>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-control-static">@Model.Escort.EscortNo</label>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.lname" class="form-control-static">Last Name</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.lname" type="text" class="form-control" />
+                <span asp-validation-for="Escort.lname" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.fname" class="form-control-static">First Name</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.fname" type="text" class="form-control" />
+                <span asp-validation-for="Escort.fname" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.mname" class="form-control-static">Middle Name</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.mname" type="text" class="form-control" />
+                <span asp-validation-for="Escort.mname" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.Company" class="form-control-static">Company</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.Company" type="text" class="form-control" />
+                <span asp-validation-for="Escort.Company" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.BadgeNo" class="form-control-static">Badge Number</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.BadgeNo" type="text" class="form-control" />
+                <span asp-validation-for="Escort.BadgeNo" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <div class="col-sm-3">
+                <label asp-for="Escort.Phone" class="form-control-static">Phone</label>
+            </div>
+            <div class="col-sm-9">
+                <input asp-for="Escort.Phone" type="text" class="form-control" />
+                <span asp-validation-for="Escort.Phone" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm text-center">
+                <button class="btn btn-success" type="submit" value="Save" >Save</button>
+                <a asp-controller="Request" asp-action="Escorts" asp-action-requestid="@Model.Escort.RequestID" asp-route-page="@ViewBag.Page" class="btn btn-info" value="Cancel">Cancel</a>
+        </div>
+    </form>
+</div>

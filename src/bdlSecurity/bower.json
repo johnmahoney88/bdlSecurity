@@ -1,0 +1,18 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "jquery" : "2.2.2",
+    "jQuery-Collapse": "1.1.2",
+    "jquery-tablesort": "0.0.6",
+    "paginationjs": "2.0.7",
+    "jquery-validation": "1.15.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "date-picker-group": "1.2.0",
+    "Font-Awesome": "4.5.0"
+  },
+  "resolutions": {
+    "jquery": ">= 1.7.2"
+  }
+}

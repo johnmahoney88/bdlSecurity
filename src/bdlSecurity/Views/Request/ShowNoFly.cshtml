@@ -1,0 +1,21 @@
+﻿@model bdlSecurity.ViewModels.RequestViewModel
+@{
+    ViewBag.Title = "NoFlySelectee";
+
+}
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h3>@ViewBag.Message</h3>
+
+<div class="col-md-9">
+    <h3>NoFly</h3>
+    <ul>
+        @foreach (var n in Model.NoFlySelectee)
+        {
+            <li>@string.Format("{0} - {1} {2}", n.SID, n.LASTNAME, n.FIRSTNAME)</li>
+        }
+    </ul>
+</div>

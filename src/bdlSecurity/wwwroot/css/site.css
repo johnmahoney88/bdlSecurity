@@ -1,0 +1,77 @@
+﻿body {
+    padding-top: 50px;
+    /*padding-bottom: 25px;*/
+    margin-bottom: 25px;
+
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.bannerimage {
+  background-color:white;
+  border: 0;
+  margin-top:0;
+  padding-top:0;
+}
+
+#sidebar {
+  background: #2a2c36;
+  color: #eee;
+  position: fixed;
+  height: 75%;
+  width: 150px;
+  overflow: hidden;
+  left: 0;
+  margin: 0;
+  -moz-transition: left ease .25s;
+  -o-transition: left ease .25s;
+  -webkit-transition: left ease .25s;
+  transition: left ease .25s;
+}
+
+  #sidebar.hide-sidebar {
+    left: -200px;
+    -moz-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+  }
+
+  .footer 
+  {
+  bottom: 0;
+  max-height: 25px;
+  left: 0;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  text-left;
+}
+
+    a.disabled
+    {
+        text-decoration:none;
+        pointer-events:none;
+        background-color: #838383;
+        border-color: #46b8da;
+        color: #c7c5ee;
+    }
+

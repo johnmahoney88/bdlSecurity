@@ -1,0 +1,21 @@
+﻿@model bdlSecurity.ViewModels.BadgeViewModel
+@{
+    ViewBag.Title = "Badges";
+
+}
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h3>@ViewBag.Message</h3>
+
+<div class="col-md-9">
+    <h3>Badges</h3>
+    <ul>
+        @foreach (var b in Model.Badges)
+        {
+            <li>@string.Format("{0} - {1} {2}", b.c_id, b.c_lname, b.c_fname)</li>
+        }
+    </ul>
+</div>

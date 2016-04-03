@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="row container-fluid">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>BDL Badge Security Application</h1>
+        <p>This app will provide Badge verfication</p>
+        <a asp-controller="Request" asp-action="Add" class="btn btn-lg btn-success">Generate Badge</a>
+        <a asp-controller="Request" asp-action="Index" class="btn btn-lg btn-success">My Badge Requests</a>
+    </div>
+</div>

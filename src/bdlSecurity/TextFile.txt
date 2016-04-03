@@ -1,0 +1,80 @@
+﻿<%
+' 
+'Temp Badge System Badge Permit
+' 
+' Peter Mahoney 
+' 3/2016
+'
+' The purpose of this report is provide a paper report/permit to be carried
+' by Temp Badge Holders while being escorted
+'
+' parmeter: tbid=N
+'
+' v1 - 
+'
+'
+'
+
+pID = request.querystring("TBID")
+
+
+response.write "<h1>BDL Temp Badge Permit</h1><br>"
+
+
+Session.timeout = 15
+Set conn = Server.CreateObject("ADODB.Connection")
+conn.open "Security","sa","ldb$8ldb"
+Set Session("MyDB_conn") = conn
+
+strSQLQuery = "SELECT * FROM v_tb_request where RequestID = " & pID
+Set rs = Server.CreateObject("ADODB.Recordset")
+rs.Open strSQLQuery, conn, 3, 3
+
+response.write "<table border='0'><tbody><tr><td align='right'>"
+
+response.write "Temp Badge Holder: "
+response.write "</td><td>"
+response.write("<b>" & rs("fname") & " " & rs("mname") & " " & rs("lname") & ", " & rs("Phone") & "</b><br>")
+response.write "</td></tr>"
+
+response.write "<tr><td align='right'>"
+response.write "Company: "
+response.write "</td><td>"
+response.write("<b>" & rs("CompanyName") & ", " & rs("CompanyPhone") & "</b><br>")
+response.write "</td></tr>"
+
+response.write "<tr><td align='right'>"
+response.write " Temp Badge Number: "
+response.write "</td><td>"
+response.write("<b>" & rs("TBNumber") & "</b><br>")
+response.write "</td></tr>"
+
+response.write "<tr><td align='right'>"
+response.write " Temp Badge Valid Period: "
+response.write "</td><td>"
+response.write("<b>" & rs("TBStart") & " - " & rs("TBEnd") & "</b><br>")
+response.write "</td></tr>"
+
+response.write "<tr><td align='right'>"
+response.write " Reason: "
+response.write "</td><td>"
+response.write("<b>" & rs("TBReason") & "</b><br>")
+response.write "</td></tr>"
+
+response.write("</tbody></table>")
+
+response.write("<br>Permit Requested by Badge #: " & rs("RequestorBadgeNumber") & " on " & rs("RequestDate") & " " & rs("Score") & "<br>")
+
+response.write("<h2>Escort(s)</h2>")
+
+do until rs.eof
+	response.write(rs("efname") & " " & rs("emname") & " " & rs("elname") & ", Badge #: " & rs("eBadgeNo") & ", " & rs("eCompany") & " " & rs("ePhone") & " " & "<br>")
+	rs.movenext
+loop
+
+response.write("<br>Printed: " & now() & "<br>")
+
+conn.close
+set conn = Nothing
+
+%>

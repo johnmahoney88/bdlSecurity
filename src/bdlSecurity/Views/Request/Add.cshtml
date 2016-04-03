@@ -1,0 +1,184 @@
+﻿@using bdlSecurity.Common
+@model bdlSecurity.ViewModels.SingleRequestViewModel
+    
+<h3>@ViewBag.Title</h3>
+
+
+@section Scripts{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+}
+
+<h3>Generate badge request</h3>
+
+<div class="col-sm-9">
+    <form method="post" novalidate>
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="alert-info"></div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.RequestorBadgeNumber" class="col-sm-3 form-control-static">RequestorBadgeNumber</label>
+            <div class="col-sm-9">
+                <label class="form-control-static">@Model.Request.RequestorBadgeNumber</label>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.RequestDate" class="col-sm-3 form-control-static">Request Date</label>
+            <div class="col-sm-9">
+                <label class="col-sm-9 form-control-static">@Model.Request.RequestDate.ToString("MM/dd/yyyy")</label>
+                <input type="hidden" asp-for="Request.RequestorBadgeNumber" />
+                <input type="hidden" asp-for="Request.RequestDate" />
+                <input type="hidden" asp-for="Request.RequestID" />
+                <input type="hidden" asp-for="Request.Score" />
+                <input type="hidden" asp-for="ReturnAction" />
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.RequestorBadgeNumber" class="col-sm-3 form-control-static">Request Number</label>
+            <div class="col-sm-9">
+                <label class="col-sm-9 form-control-static">@Model.Request.RequestID</label>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.lname" class="col-sm-3 form-control-static">Last Name</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.lname" type="text" class="form-control" />
+                <span asp-validation-for="Request.lname" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.fname" class="col-sm-3 form-control-static">First Name</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.fname" type="text" class="form-control" />
+                <span asp-validation-for="Request.fname" class="alert-info"></span>
+            </div>
+        </div>            
+        <div class="row form-group-sm">
+            <label asp-for="Request.mname" class="col-sm-3 form-control-static">Middle Name</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.mname" type="text" class="form-control" />
+                <span asp-validation-for="Request.mname" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.alias" class="col-sm-3 form-control-static">Alias</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.alias" type="text" class="form-control" />
+                <span asp-validation-for="Request.alias" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.Address" class="col-sm-3 form-control-static">Address</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.Address" type="text" class="form-control" />
+                <span asp-validation-for="Request.Address" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.City" class="col-sm-3 form-control-static">City</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.City" type="text" class="form-control" />
+                <span asp-validation-for="Request.City" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.State" class="col-sm-3 form-control-static">State</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.State" type="text" class="form-control" />
+                <span asp-validation-for="Request.State" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.Zipcode" class="col-sm-3 form-control-static">Zipcode</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.Zipcode" type="text" class="form-control" />
+                <span asp-validation-for="Request.Zipcode" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.Phone" class="col-sm-3 form-control-static">Phone</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.Phone" type="text" class="form-control" />
+                <span asp-validation-for="Request.Phone" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.DOB" class="col-sm-3 form-control-static">Date of Birth</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.DOB" type="text" class="form-control" />
+                <span asp-validation-for="Request.DOB" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.BirthCity" class="col-sm-3 form-control-static">Birth City</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.BirthCity" type="text" class="form-control" />
+                <span asp-validation-for="Request.BirthCity" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.BirthState" class="col-sm-3 form-control-static">Birth State</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.BirthState" type="text" class="form-control" />
+                <span asp-validation-for="Request.BirthState" class="alert-info"></span>
+            </div>
+        </div>
+
+        <div class="row form-group-sm">
+            <label asp-for="Request.BirthCountry" class="col-sm-3 form-control-static">Birth Country</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.BirthCountry" type="text" class="form-control" />
+                <span asp-validation-for="Request.BirthCountry" class="alert-info"></span>
+            </div>
+        </div>           
+        <div class="row form-group-sm">
+            <label asp-for="Request.CompanyName" class="col-sm-3 form-control-static">Company Name</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.CompanyName" type="text" class="form-control" />
+                <span asp-validation-for="Request.CompanyName" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.CompanyPhone" class="col-sm-3 form-control-static">Company Phone</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.CompanyPhone" type="text" class="form-control" />
+                <span asp-validation-for="Request.CompanyPhone" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.TBStart" class="col-sm-3 form-control-static">Start</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.TBStart" type="text" class="form-control" />
+                <span asp-validation-for="Request.TBStart" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.TBEnd" class="col-sm-3 form-control-static">End</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.TBEnd" type="text" class="form-control" />
+                <span asp-validation-for="Request.TBEnd" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.TBReason" class="col-sm-3 form-control-static">Reason</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.TBReason" type="text" class="form-control" />
+                <span asp-validation-for="Request.TBReason" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm">
+            <label asp-for="Request.TBNumber" class="col-sm-3 form-control-static">Badge Number</label>
+            <div class="col-sm-9">
+                <input asp-for="Request.TBNumber" type="text" class="form-control" />
+                <span asp-validation-for="Request.TBNumber" class="alert-info"></span>
+            </div>
+        </div>
+        <div class="row form-group-sm text-center">
+                <button class="btn btn-success" type="submit" name="command" value="Save" asp-route-page="@ViewBag.Page">Save</button>
+                <button class="btn btn-info" type="submit" name="Command" value="@Globals.RouteActions.Escorts" asp-route-page="@ViewBag.Page">Escorts</button>
+                <a asp-controller="Request" asp-action="Cancel" asp-route-requestid="@Model.Request.RequestID" asp-route-page="@ViewBag.Page" class="btn btn-info" >Cancel</a>
+        </div>
+</form>
+
+</div>

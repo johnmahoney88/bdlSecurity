@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-cerulean.css">
+    @*<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">*@
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+    <script type="text/javascript" src="~/lib/jquery/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+</head>
+<body>
+    @*<div class="container" hidden="@ViewBag.HideBannerImage">
+        <img class="img-responsive" width="75" height="75" src="~/images/logo.png" srcset="" alt="Bradley Airport(BDL)"/>
+    </div>*@
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img class="img-responsive bannerimage" width="35" height="35" src="~/images/logo.png" alt="Bradley Airport(BDL)" />
+                    </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                    
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">                
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Home" asp-action="Index">My Requests</a></li>
+                        <li><a asp-controller="Request" asp-action="Add">Badge Request</a></li>
+                    }
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-controller="Home" asp-action="Help">Help</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()        
+    </div>
+    <footer class="footer">
+        @inject Microsoft.Extensions.PlatformAbstractions.IApplicationEnvironment appEnv
+        <p>              
+            <small>TB v @appEnv.ApplicationVersion</small> &copy; Connecticut Airport Authority @DateTime.Now.Year
+        </p>
+    </footer>
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

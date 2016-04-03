@@ -1,0 +1,67 @@
+﻿@model bdlSecurity.ViewModels.PrintRequestViewModel
+
+<h3>@ViewBag.Title</h3>
+
+
+@section Scripts{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+    #table {
+        border: none;
+    }
+    .bannerimage{hidden:hidden;}
+
+</style>
+    <script language="javascript">
+
+    </script>
+}
+
+
+<div class="row">
+    <h2>BDL Temp Badge Permit</h2>
+    <div class="col-md-9">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Temp Badge Holder:</td>
+                        <td><b>@string.Format("{0} {1} {2}, {3}", Model.Request.fname, Model.Request.mname, Model.Request.lname, Model.Request.Phone)</b></td>
+                    </tr>
+                    <tr>
+                        <td>Company:</td>
+                        <td><b>@string.Format("{0}, {1}", Model.Request.CompanyName, Model.Request.CompanyPhone)</b></td>
+                    </tr>
+                    <tr>
+                        <td>Temp Badge Number:</td>
+                        <td><b>@string.Format("{0}", Model.Request.TBNumber)</b></td>
+                    </tr>
+                    <tr>
+                        <td>Temp Badge Valid Period:</td>
+                        <td><b>@string.Format("{0} - {1}", 
+                              (Model.Request.TBStart.HasValue ? Model.Request.TBStart.Value.ToString("MM/dd/yyyy") : "N/A"), 
+                              (Model.Request.TBEnd.HasValue ? Model.Request.TBEnd.Value.ToString("MM/dd/yyyy") : "N/A"))</b></td>
+                    </tr>
+                    <tr>
+                        <td>Reason:</td>
+                        <td><b>@string.Format("{0}", Model.Request.TBReason)</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        <h5>@string.Format("Permit Requested by Badge #: {0} on {1} {2}", Model.Request.RequestorBadgeNumber, Model.Request.RequestDate.ToString("MM/dd/yyyy"), Model.Request.Score)<br></h5>
+        <h3>Escort(s)</h3>
+        @foreach (var e in Model.Request.RequestEscorts)
+        {
+            @string.Format("{0} {1} {2}, Badge # {3}, {4} {5}", e.fname, e.mname, e.lname, e.BadgeNo, e.Company, e.Phone);
+        }
+        <br />
+        <p>
+            <h5>Printed:  @DateTime.Now.ToString("MM/dd/yyyy h:mm:ss tt")</h5>
+        </p>
+        <a asp-controller="Request" asp-action="Index" asp-action-page="@ViewBag.Page" class="btn-sm btn-block" value="Cancel">Close</a>
+        <a href="#" onclick="window.print(); return false;" class="btn-sm btn-block" value="Print">Print</a>
+    </div>
+</div>
